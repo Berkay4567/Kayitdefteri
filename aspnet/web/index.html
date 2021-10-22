@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="ng.js"></script>
+    <title></title>
+</head>
+<body ng-app="uygulama" ng-controller="kullanicictrl">
+    <table>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Mail Adresi</th>
+            <th>Telefon</th>
+            <th>İşlemler</th>
+        </tr>
+        <tr ng-repeat="x in kullanicilistesi">
+            <td>{{x.AdSoyad}}</td>
+            <td>{{x.MailAdresi}}</td>
+            <td>{{x.Telefon}}</td>
+
+            <td>
+                <button value="sil" ng-click="kullanicisil(x.KullaniciID)" class="btn btn-danger">SİL</button>
+                <button ng-click="kullaniciguncelle(x)" class="btn btn-warning">Güncelle</button>
+            </td>
+        </tr>
+        
+    </table><hr /><hr />
+    <input type="text" ng-model="kullanici.AdSoyad" placeholder="Ad Soyad giriniz" /><br />
+    <input type="text" ng-model="kullanici.MailAdresi" placeholder="Mail giriniz" /><br />
+    <input type="text" ng-model="kullanici.Telefon" placeholder="Telefon giriniz" /><br />
+    <button ng-show="kullanici.KullaniciID == undefined" ng-click="kullaniciekle(kullanici)" class="btn btn-success">EKLE</button>
+    <button ng-show="kullanici.KullaniciID != undefined" ng-click="guncelle(kullanici)" class="btn btn-warning">Güncelle</button>
+</body>
+</html>
